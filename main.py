@@ -68,6 +68,26 @@ async def markdown(interaction: discord.Interaction, format: app_commands.Choice
     markdown_format = True if format.value == "on" else False
     print(f"Markdown format changed to: {markdown_format}", flush=True)
 
+@tree.command(name="delete", description="delete images using ID")
+async def delete(interaction: discord.Interaction, id: str):
+    await interaction.response.send_message(f"Deleting image with ID: {id}")
+    headers={"Authorization": f"Bearer {api_key}"}
+    url = f"{server_url}/delete/{id}"
+
+    async with aiohttp.ClientSession() as session:
+        async with session.delete(url, headers=headers) as response:
+            try:
+                data = await response.json()
+            except Exception:
+                data = {}
+
+            if response.status>= 200 and response.status < 300:
+                await interaction.followup.send(f"Image with ID: {id} deleted successfully.")
+            elif response.status == 404:
+                await interaction.followup.send(f"Image with ID: {id} not found.")
+            else:
+                await interaction.followup.send(f"Failed to delete image with ID: {id}. Status code: {response.status}. Response: {data}")
+
 @tree.command(name="about", description="Get information about this chatbot")
 async def about(interaction: discord.Interaction):
     await interaction.response.send_message("This is a discord chatbot, built as a wrapper around openrouter api, where variety of AI models can be directly accessed from discord chats."

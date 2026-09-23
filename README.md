@@ -5,11 +5,13 @@ A discord bot to upload images to cdn with option to strip the metadata
 * **CDN Uploader** — Directly upload images from Discord
 * **Remove Metadata** — Removes the metadata of the image before sending
 * **Markdown Format** — Automatically generates markdown format to directly paste
+* **Image Deletion Support** — Delete images from CDN by using provided ID
 * **Discord Support** — Works directly in Discord DMs and servers
 * **Slash Commands** — Short commands for controlling the bot
 
 ## Slash Commands
 * **`markdown`** — Toggle sending of markdown format
+* **`delete`** — Delete image by entering the ID
 * **`ping`** — Check chatbot connectivity status
 * **`clear`** — Clear recent messages by chatbot
 * **`about`** — Shows information about the bot itself
