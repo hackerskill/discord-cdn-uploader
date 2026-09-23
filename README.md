@@ -16,6 +16,8 @@ A discord bot to upload images to cdn with option to strip the metadata
 * **`clear`** — Clear recent messages by chatbot
 * **`about`** — Shows information about the bot itself
 
+> **Note on Metadata Removal:** Metadata removal logic was implemented in the code, only to later discover that discord it self removes metadata from images before sending the file to everyone.
+
 ## Setup
 
 1. Get API keys for Discord bot at [Discord Developer Portal](https://discord.com/developers/) and CDN.
