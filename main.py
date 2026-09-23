@@ -114,9 +114,9 @@ async def on_message(message):
                 response = await response.json()
                 cdn_url = response.get("url")
                 print(response, flush=True)
-                await message.channel.send(f"Image uploaded successfully: {cdn_url}")
+                await message.channel.send(f"Image uploaded successfully:\n`{cdn_url}`")
                 if markdown_format:
-                    await message.channel.send(f"![]({cdn_url})")
+                    await message.channel.send(f"![](<{cdn_url}>)")
                 print(f"Image uploaded successfully: {cdn_url}", flush=True)
             else:
                 await message.channel.send(f"Failed to upload image. Status code: {response.status}")
