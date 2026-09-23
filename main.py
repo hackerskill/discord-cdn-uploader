@@ -72,7 +72,7 @@ async def markdown(interaction: discord.Interaction, format: app_commands.Choice
 async def delete(interaction: discord.Interaction, id: str):
     await interaction.response.send_message(f"Deleting image with ID: {id}")
     headers={"Authorization": f"Bearer {api_key}"}
-    url = f"{server_url}/delete/{id}"
+    url = f"{server_url}/upload/{id}"
 
     async with aiohttp.ClientSession() as session:
         async with session.delete(url, headers=headers) as response:
